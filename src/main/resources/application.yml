@@ -4,6 +4,14 @@ server:
 spring:
   application:
     name: consumer-service
+  datasource:
+    username: root
+    password: 1234
+    url: jdbc:mysql://localhost:3307/consumer?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+  jpa:
+    show-sql: false
+  jackson:
+    property-naming-strategy: SNAKE_CASE
 
 eureka:
   instance:

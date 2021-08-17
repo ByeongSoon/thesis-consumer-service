@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ConsumerApiRequest {
 
+    private Long id;
+
     private String account;
 
     private String password;

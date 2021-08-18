@@ -71,14 +71,12 @@ public class ConsumerApiLogicService implements CrudInterface<ConsumerApiRespons
         ConsumerApiRequest body = request.getData();
 
         return consumerRepository.findById(body.getId())
-                .map( consumer -> {
-                    return consumer
-                            .setAccount(body.getAccount())
-                            .setPassword(body.getPassword())
-                            .setEmail(body.getEmail())
-                            .setPhoneNumber(body.getPhoneNumber())
-                            .setUpdatedAt(LocalDateTime.now());
-                })
+                .map( consumer -> consumer
+                        .setAccount(body.getAccount())
+                        .setPassword(body.getPassword())
+                        .setEmail(body.getEmail())
+                        .setPhoneNumber(body.getPhoneNumber())
+                        .setUpdatedAt(LocalDateTime.now()))
                 .map(consumer -> consumerRepository.save(consumer))
                 .map(this::response)
                 .map(Header::OK)
@@ -126,7 +124,7 @@ public class ConsumerApiLogicService implements CrudInterface<ConsumerApiRespons
 
     public ConsumerApiResponse response(Consumer consumer) {
 
-        ConsumerApiResponse consumerApiResponse = ConsumerApiResponse.builder()
+        return ConsumerApiResponse.builder()
                 .id(consumer.getId())
                 .account(consumer.getAccount())
                 .password(consumer.getPassword())
@@ -135,8 +133,6 @@ public class ConsumerApiLogicService implements CrudInterface<ConsumerApiRespons
                 .createdAt(consumer.getCreatedAt())
                 .updatedAt(consumer.getUpdatedAt())
                 .build();
-
-        return consumerApiResponse;
 
     }
 

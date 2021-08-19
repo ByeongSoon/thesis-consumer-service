@@ -36,7 +36,7 @@ public class ConsumerApiLogicService implements CrudInterface<ConsumerApiRespons
                 .password(body.getPassword())
                 .email(body.getEmail())
                 .phoneNumber(body.getPhoneNumber())
-                .createdAt(LocalDateTime.now())
+//                .createdAt(LocalDateTime.now())
                 .build();
 
         return Header.OK(response(consumerRepository.save(consumer)));
@@ -76,7 +76,8 @@ public class ConsumerApiLogicService implements CrudInterface<ConsumerApiRespons
                         .setPassword(body.getPassword())
                         .setEmail(body.getEmail())
                         .setPhoneNumber(body.getPhoneNumber())
-                        .setUpdatedAt(LocalDateTime.now()))
+//                        .setUpdatedAt(LocalDateTime.now())
+                )
                 .map(consumer -> consumerRepository.save(consumer))
                 .map(this::response)
                 .map(Header::OK)
